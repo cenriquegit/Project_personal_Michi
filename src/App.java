@@ -76,26 +76,20 @@ public class App {
 
             //Deckaracion y definicion del array y de las variable que se usaran para dar valores a las posiciones de cada uno:
 
-            String[][] michi = new String[3][3];
    
             int filaSys=3;
             int columnaSys=3;
 
-            System.out.println("Este es el ESQUEMA");
 
             //Codigo para recorrer el array bidimensional y agregarle _ a todos los campos o valores dentro:
             boolean isGanada = false;
     
     while (!isGanada) {
-            boolean isllenada = false;
+            System.out.println("Este es el ESQUEMA");
 
-            
-            for (int i = 0; i < michi.length; ++i) {
-                        
-                for (int j = 0; j < michi.length; ++j) {
-                michi[i][j] = "_";
-                }
-            }
+            String[][] michi = {{"_","_","_"},{"_","_","_"},{"_","_","_"}};
+
+            boolean isllenada = false;
 
             //Codigo para que muestre en pantalla el esquema del MICHI:
 
@@ -104,7 +98,6 @@ public class App {
                 for (String[] mich : michi) {
 
                     System.out.print("fila :  ");
-                
                 
                     for (int z = 0; z < mich.length; ++z) {
                     
@@ -160,8 +153,10 @@ public class App {
                                     try {
                                             filaUser=Integer.parseInt(filaStringUser);
                                                 if (filaUser==Integer.parseInt(filaStringUser)) {
-                                                    filaCorecta=true;
+                                                    if (filaUser<3) {
+                                                        filaCorecta=true;
                                                     System.out.println("--!!!Fila coreectamente seleccionada: "+filaUser+" !!!--");
+                                                    }
                                                 }
                                         } catch (Exception e) {
                                             System.out.println();
@@ -180,8 +175,11 @@ public class App {
                                     try {
                                         columnaUser=Integer.parseInt(columStringSystem);
                                             if (columnaUser==Integer.parseInt(columStringSystem)) {
-                                                columnaCorrecta=true;
+                                                if (columnaUser<3) {
+                                                    columnaCorrecta=true;
                                                 System.out.println("--!!!Columna coreectamente seleccionada: "+columnaUser+" !!!--");
+                                                }
+                                                ;
                                             }
                                         } catch (Exception e) {
                                             System.out.println();
@@ -190,8 +188,7 @@ public class App {
                                         }
                                 }
                                     
-                                if(filaUser <3 && columnaUser <3)
-                                {
+                                
                                     //Codigo para colocar la letra del usuario en la posicion que selecciono:
                             
                                     if(michi[filaUser][columnaUser]!=selecSystem && michi[filaUser][columnaUser]!=selecUser){
@@ -203,11 +200,7 @@ public class App {
                                         System.out.println("---La Posicion esta OCUPADA, Vuelve a seleccionar de nuevo---");
                                         System.out.println();
                                     }
-                                }else{
-                                    System.out.println();
-                                    System.out.println("Vuelve a seleccionar tu fila y columna:");
-                                    System.out.println();
-                                } 
+                                
                             }
                                 //Codigo para que muestre en pantalla el esquema del MICHI:
                     
@@ -294,15 +287,15 @@ public class App {
 
                                         for(int j=0;j<michi.length;++j){
                                             if (michi[0][j]!="_" ) {
-                                                    espaciosLlenos += j ;
+                                                    espaciosLlenos += 1 ;
                                                 }
     
                                             if(michi[1][j]!="_"){
-                                                espaciosLlenos += j ;
+                                                espaciosLlenos += 1 ;
                                             }
 
                                             if(michi[2][j]!="_"){
-                                                espaciosLlenos += j ;
+                                                espaciosLlenos += 1 ;
                                             }
 
                                             if (espaciosLlenos==9 ) {
@@ -360,41 +353,41 @@ public class App {
                                         System.out.println();
 
                                         michi[filaSys][columnaSys]=selecSystem;
+                             
+                                       //Codigo para que muestre en pantalla el esquema del MICHI:
+
+                                        System.out.println("         col 0   col 1   col 2");
+
+                                        for (String[] mich : michi) {
+                                        
+                                            System.out.print("fila :  ");
+                                        
+                                        
+                                            for (int z = 0; z < mich.length; ++z) {
+                                            
+                                                switch (z) {
+                                                
+                                                    case 0:
+                                                    System.out.print("   "+mich[z]+" ");
+                                                        break;
+                                                    case 2:
+                                                    System.out.print("  " + mich[z] + "     ");
+                                                
+                                                    System.out.println();
+                                                        break;
+                                                    default:
+                                                    System.out.print("     " + mich[z] + "     ");
+                                                        break;
+                                                
+                                                         }
+                                                     }
+                                                 }
+                                                System.out.println();
 
                                         isVacio=true;
 
                                     }
                                 }
-
-                                //Codigo para que muestre en pantalla el esquema del MICHI:
-                    
-                                System.out.println("         col 0   col 1   col 2");
-
-                                for (String[] mich : michi) {
-
-                                    System.out.print("fila :  ");
-                                
-                                
-                                    for (int z = 0; z < mich.length; ++z) {
-                                    
-                                        switch (z) {
-
-                                            case 0:
-                                            System.out.print("   "+mich[z]+" ");
-                                                break;
-                                            case 2:
-                                            System.out.print("  " + mich[z] + "     ");
-                                        
-                                            System.out.println();
-                                                break;
-                                            default:
-                                            System.out.print("     " + mich[z] + "     ");
-                                                break;
-                                        
-                                        }
-                                    }
-                                }
-                                System.out.println();
 
                                 //Codigo para comprobar si se formo una fila o diagonal con la letra del system:
 
@@ -445,7 +438,6 @@ public class App {
                                     }
                                 }
                 }
-            isGanada=true;
         }
 
         scanner.close();
